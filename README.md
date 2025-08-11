@@ -2,7 +2,9 @@
 
 - **Business goal:** Rank customers by churn risk so marketing can focus limited outreach on the highest-risk segment.
 
-- **Data & prep:** Telco customer records. Normalized “No internet/phone service”, coerced numeric `TotalCharges` (blanks only where `tenure=0`), dropped `customerID`. End-to-end scikit-learn **Pipeline** (impute → scale → OHE with `drop='first'`) to prevent leakage and keep training reproducible.
+- **Data source:** Kaggle — [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+
+- **Data & prep:** Normalized “No internet/phone service”, coerced numeric `TotalCharges` (blanks only where `tenure=0`), dropped `customerID`. End-to-end scikit-learn **Pipeline** (impute → scale → OHE with `drop='first'`) to prevent leakage and keep training reproducible.
 
 - **Models tested:** Logistic Regression (class-weighted), Random Forest, Calibrated RF.  
   **Chosen:** **Logistic Regression** — similar accuracy, better calibration, and interpretable drivers.
@@ -29,3 +31,4 @@
 - **Action plan:** Target **Month-to-month + high charge + Fiber** segments first; A/B test lower-cost bundles/credits; promote longer contracts & autopay; track conversion by segment and re-tune threshold.
 
 - **Artifacts:** `top25_contacts.csv`, `churn_lr_v2.pkl`, `threshold_top25.npy`.
+
